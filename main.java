@@ -1,54 +1,55 @@
-class Animal {
-    private String name;
-    protected int age;
-    public String type;
+public class Animal {
+    private String name;         
+    protected int age;         
+    public String species;      
 
-    public Animal(String name, int age, String type) {
+    public Animal(String name, int age, String species) {
         this.name = name;
         this.age = age;
-        this.type = type;
+        this.species = species;
+    }
+
+    public void speak() {
+        System.out.println("Animal makes a sound.");
     }
 
     public String getName() {
         return name;
     }
 
-    public void makeSound() {
-        System.out.println("Животное издаёт звук");
+    public void setName(String name) {
+        this.name = name;
     }
 }
 
 class Dog extends Animal {
     public Dog(String name, int age) {
-        super(name, age, "Собака");
+        super(name, age, "Dog");
     }
 
     @Override
-    public void makeSound() {
-        System.out.println(getName() + " гавкает: Гав-гав!");
+    public void speak() {
+        System.out.println(getName() + " barks.");
     }
 }
 
 class Cat extends Animal {
     public Cat(String name, int age) {
-        super(name, age, "Кошка");
+        super(name, age, "Cat");
     }
 
     @Override
-    public void makeSound() {
-        System.out.println(getName() + " мяукает: Мяу-мяу!");
+    public void speak() {
+        System.out.println(getName() + " meows.");
     }
 }
 
-public class main {
-    public main(String[] args) {
-        Animal dog = new Dog("Шарик", 3);
-        Animal cat = new Cat("Чоорный", 2);
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog("Rex", 5);
+        Animal myCat = new Cat("Whiskers", 3);
 
-        dog.makeSound();
-        cat.makeSound();
-
-        System.out.println("Тип животного: " + dog.type);
-        System.out.println("Имя животного: " + dog.getName());
+        myDog.speak(); 
+        myCat.speak(); 
     }
 }
